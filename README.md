@@ -2,7 +2,6 @@
 
 Test repository simulating external API documentation.
 Used to test vector search for code impact analysis.
-new line
 
 ---
 
