@@ -2,6 +2,7 @@
 
 Test repository simulating external API documentation.
 Used to test vector search for code impact analysis.
+new line
 
 ---
 
@@ -16,6 +17,9 @@ Requires signature parameter (HMAC SHA256)
 ### Parameters:
 - `symbol` (string, required): Trading pair (e.g., "BTCUSDT")
 - `side` (string, required): "BUY" or "SELL"
+- `type` (string, required): "LIMIT", "MARKET", "STOP_LOSS", "STOP_LOSS_LIMIT", "TAKE_PROFIT", "TAKE_PROFIT_LIMIT", "LIMIT_MAKER"
+- `quantity` (decimal, required): Order quantity
+- `price` (decimal, required for LIMIT orders): Order price
 - `timeInForce` (string, required for LIMIT orders): "GTC" (Good Till Cancel), "IOC" (Immediate or Cancel), "FOK" (Fill or Kill)
 - `timestamp` (long, required): Request timestamp in milliseconds
 - `signature` (string, required): HMAC SHA256 signature
@@ -28,6 +32,10 @@ Requires signature parameter (HMAC SHA256)
   "clientOrderId": "myOrder1",
   "transactTime": 1499827319559,
   "price": "50000.00",
+  "origQty": "0.01",
+  "executedQty": "0.01",
+  "status": "FILLED",
+  "timeInForce": "GTC",
   "type": "LIMIT",
   "side": "BUY"
 }
@@ -53,6 +61,11 @@ Requires signature parameter
   "makerCommission": 15,
   "takerCommission": 15,
   "buyerCommission": 0,
+  "sellerCommission": 0,
+  "canTrade": true,
+  "canWithdraw": true,
+  "canDeposit": true,
+  "updateTime": 123456789,
   "balances": [
     {
       "asset": "BTC",
@@ -88,6 +101,12 @@ Requires API key and signature
 {
   "symbol": "BTCUSDT",
   "orderId": 123456,
+  "clientOrderId": "myOrder1",
+  "price": "50000.00",
+  "origQty": "0.01",
+  "executedQty": "0.01",
+  "status": "FILLED",
+  "timeInForce": "GTC",
   "type": "LIMIT",
   "side": "BUY",
   "time": 1499827319559,
